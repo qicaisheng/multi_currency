@@ -16,8 +16,12 @@ public class Money {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Money money = (Money) o;
-        return value == money.value &&
-                Objects.equals(currency, money.currency);
+        
+        Money currentMoney = new Bank().transformWith(this, "USD");
+        Money comparedMoney = new Bank().transformWith(money, "USD");
+        
+        return currentMoney.getValue() == comparedMoney.value &&
+                Objects.equals(currentMoney.getCurrency(), comparedMoney.getCurrency());
     }
 
     @Override

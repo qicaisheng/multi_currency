@@ -20,4 +20,12 @@ public class MoneyTest {
 
         Assert.assertNotEquals(fiveDollar, fiveFranc);
     }
+
+    @Test
+    public void should_return_true_when_compare_5_USD_with_10_CHF() {
+        Money fiveDollar = new Money(5, "USD");
+        Money tenFranc = new Money(10, "CHF");
+
+        Assert.assertEquals(fiveDollar, tenFranc);
+    }
 }
