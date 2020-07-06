@@ -24,4 +24,12 @@ public class Money {
     public int hashCode() {
         return Objects.hash(value, currency);
     }
+
+    public int getValue() {
+        return value;
+    }
+
+    public String getCurrency() {
+        return currency;
+    }
 }
