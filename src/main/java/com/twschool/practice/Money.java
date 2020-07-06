@@ -1,12 +1,13 @@
 package com.twschool.practice;
 
+import java.math.BigDecimal;
 import java.util.Objects;
 
 public class Money {
-    private final int value;
+    private final BigDecimal value;
     private final String currency;
 
-    public Money(int value, String currency) {
+    public Money(BigDecimal value, String currency) {
         this.value = value;
         this.currency = currency;
     }
@@ -20,7 +21,7 @@ public class Money {
         Money currentMoney = new Bank().transformWith(this, "USD");
         Money comparedMoney = new Bank().transformWith(money, "USD");
         
-        return currentMoney.getValue() == comparedMoney.value &&
+        return currentMoney.getValue().compareTo(comparedMoney.value) == 0 &&
                 Objects.equals(currentMoney.getCurrency(), comparedMoney.getCurrency());
     }
 
@@ -29,7 +30,7 @@ public class Money {
         return Objects.hash(value, currency);
     }
 
-    public int getValue() {
+    public BigDecimal getValue() {
         return value;
     }
 
