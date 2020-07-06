@@ -38,6 +38,16 @@ public class BankTest {
     }
 
     @Test
+    public void should_return_zero_dot_five_USD_when_transform_with_USD_given_1_dot_1_CHF() {
+        Money money = new Money(new BigDecimal("1.01"), "CHF");
+        Bank bank = new Bank();
+
+        Money transformedMoney = bank.transformWith(money, "USD");
+        Assert.assertEquals(new BigDecimal("0.50"), transformedMoney.getValue());
+        Assert.assertEquals("USD", transformedMoney.getCurrency());
+    }
+
+    @Test
     public void should_return_10_USD_when_transform_with_CHF_given_5_USD() {
         Money money = new Money(BigDecimal.valueOf(5), "USD");
         Bank bank = new Bank();

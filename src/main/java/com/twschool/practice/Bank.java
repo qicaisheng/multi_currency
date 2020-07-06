@@ -9,7 +9,7 @@ public class Bank {
         }
         if (currency.equals("USD")) {
             if (money.getCurrency().equals("CHF")) {
-                return new Money(money.getValue().divide(BigDecimal.valueOf(2), 2, BigDecimal.ROUND_CEILING), "USD");
+                return new Money(money.getValue().divide(BigDecimal.valueOf(2), 2, BigDecimal.ROUND_FLOOR), "USD");
             }
         }
         if (currency.equals("CHF")) {
