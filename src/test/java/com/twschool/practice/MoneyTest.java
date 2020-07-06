@@ -1,0 +1,15 @@
+package com.twschool.practice;
+
+import org.junit.Assert;
+import org.junit.Test;
+
+public class MoneyTest {
+
+    @Test
+    public void should_return_true_when_compare_5_USD_with_another_5_USD() {
+        Money fiveDollar1 = new Money(5, "USD");
+        Money fiveDollar2 = new Money(5, "USD");
+
+        Assert.assertEquals(fiveDollar1, fiveDollar2);
+    }
+}
