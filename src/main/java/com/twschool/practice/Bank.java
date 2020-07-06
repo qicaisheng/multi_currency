@@ -8,9 +8,7 @@ public class Bank {
             return money;
         }
         if (currency == Currency.USD) {
-            if (money.getCurrency() == Currency.CHF) {
-                return new Money(money.getValue().divide(BigDecimal.valueOf(2), 2, BigDecimal.ROUND_FLOOR), Currency.USD);
-            }
+            return transformWithUSD(money);
         }
         if (currency == Currency.CHF) {
             if (money.getCurrency() == Currency.USD) {
