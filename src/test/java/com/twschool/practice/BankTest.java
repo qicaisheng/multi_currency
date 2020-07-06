@@ -15,8 +15,11 @@ public class BankTest {
         Money transformedMoney = bank.transformWith(fiveDollar, Currency.USD);
         Assert.assertEquals(BigDecimal.valueOf(5), transformedMoney.getValue());
         Assert.assertEquals(Currency.USD, transformedMoney.getCurrency());
-    }
 
+        Money transformedMoneyWithUSD = bank.transformWithUSD(fiveDollar);
+        Assert.assertEquals(BigDecimal.valueOf(5), transformedMoneyWithUSD.getValue());
+    }
+    
     @Test
     public void should_return_5_USD_when_transform_with_USD_given_10_CHF() {
         Money money = new Money(BigDecimal.TEN, Currency.CHF);
@@ -25,6 +28,9 @@ public class BankTest {
         Money transformedMoney = bank.transformWith(money, Currency.USD);
         Assert.assertEquals(new BigDecimal("5.00"), transformedMoney.getValue());
         Assert.assertEquals(Currency.USD, transformedMoney.getCurrency());
+
+        Money transformedMoneyWithUSD = bank.transformWithUSD(money);
+        Assert.assertEquals(new BigDecimal("5.00"), transformedMoneyWithUSD.getValue());
     }
 
     @Test
@@ -35,6 +41,9 @@ public class BankTest {
         Money transformedMoney = bank.transformWith(money, Currency.USD);
         Assert.assertEquals(new BigDecimal("0.50"), transformedMoney.getValue());
         Assert.assertEquals(Currency.USD, transformedMoney.getCurrency());
+
+        Money transformedMoneyWithUSD = bank.transformWithUSD(money);
+        Assert.assertEquals(new BigDecimal("0.50"), transformedMoneyWithUSD.getValue());
     }
 
     @Test
@@ -45,6 +54,10 @@ public class BankTest {
         Money transformedMoney = bank.transformWith(money, Currency.USD);
         Assert.assertEquals(new BigDecimal("0.50"), transformedMoney.getValue());
         Assert.assertEquals(Currency.USD, transformedMoney.getCurrency());
+
+        Money transformedMoneyWithUSD = bank.transformWithUSD(money);
+        Assert.assertEquals(new BigDecimal("0.50"), transformedMoneyWithUSD.getValue());
+
     }
 
     @Test
