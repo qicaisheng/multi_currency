@@ -37,4 +37,11 @@ public class Money {
     public String getCurrency() {
         return currency;
     }
+
+    public Money add(Money money) {
+        Money currentMoneyInUSD = new Bank().transformWith(this, "USD");
+        Money addMoneyInUSD = new Bank().transformWith(money, "USD");
+        
+        return new Money(currentMoneyInUSD.getValue().add(addMoneyInUSD.getValue()), "USD");
+    }
 }
