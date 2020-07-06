@@ -24,4 +24,15 @@ public class BankTest {
         Assert.assertEquals(5, transformedMoney.getValue());
         Assert.assertEquals("USD", transformedMoney.getCurrency());
     }
+
+
+    @Test
+    public void should_return_10_USD_when_transform_with_CHF_given_5_USD() {
+        Money money = new Money(5, "USD");
+        Bank bank = new Bank();
+
+        Money transformedMoney = bank.transformWith(money, "CHF");
+        Assert.assertEquals(10, transformedMoney.getValue());
+        Assert.assertEquals("CHF", transformedMoney.getCurrency());
+    }
 }

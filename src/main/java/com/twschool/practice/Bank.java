@@ -10,6 +10,11 @@ public class Bank {
                 return new Money(money.getValue() / 2, "USD");
             }
         }
+        if (currency.equals("CHF")) {
+            if (money.getCurrency().equals("USD")) {
+                return new Money(money.getValue() * 2, "CHF");
+            }
+        }
         return null;
     }
 }
