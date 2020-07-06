@@ -18,8 +18,8 @@ public class Money {
         if (o == null || getClass() != o.getClass()) return false;
         Money money = (Money) o;
         
-        Money currentMoney = new Bank().transformWith(this, Currency.USD);
-        Money comparedMoney = new Bank().transformWith(money, Currency.USD);
+        Money currentMoney = new Bank().transformWithUSD(this);
+        Money comparedMoney = new Bank().transformWithUSD(money);
         
         return currentMoney.getValue().compareTo(comparedMoney.value) == 0 &&
                 Objects.equals(currentMoney.getCurrency(), comparedMoney.getCurrency());
@@ -39,8 +39,8 @@ public class Money {
     }
 
     public Money add(Money money) {
-        Money currentMoneyInUSD = new Bank().transformWith(this, Currency.USD);
-        Money addMoneyInUSD = new Bank().transformWith(money, Currency.USD);
+        Money currentMoneyInUSD = new Bank().transformWithUSD(this);
+        Money addMoneyInUSD = new Bank().transformWithUSD(money);
         
         return new Money(currentMoneyInUSD.getValue().add(addMoneyInUSD.getValue()), Currency.USD);
     }
