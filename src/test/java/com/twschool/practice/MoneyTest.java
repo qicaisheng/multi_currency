@@ -12,4 +12,12 @@ public class MoneyTest {
 
         Assert.assertEquals(fiveDollar1, fiveDollar2);
     }
+
+    @Test
+    public void should_return_false_when_compare_5_USD_with_another_5_CHF() {
+        Money fiveDollar = new Money(5, "USD");
+        Money fiveFranc = new Money(5, "CHF");
+
+        Assert.assertNotEquals(fiveDollar, fiveFranc);
+    }
 }
