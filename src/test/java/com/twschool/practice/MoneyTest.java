@@ -48,4 +48,11 @@ public class MoneyTest {
         
         Assert.assertEquals(new Money(BigDecimal.TEN, Currency.USD), sumMoney);
     }
+
+    @Test
+    public void should_return_5_USD_when_with_dollar_five() {
+        Money money = Money.dollar(BigDecimal.valueOf(5));
+        
+        Assert.assertEquals(new Money(BigDecimal.valueOf(5), Currency.USD), money);
+    }
 }

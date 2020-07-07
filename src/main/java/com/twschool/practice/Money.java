@@ -12,6 +12,10 @@ public class Money {
         this.currency = currency;
     }
 
+    public static Money dollar(BigDecimal value) {
+        return new Money(value, Currency.USD);
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
