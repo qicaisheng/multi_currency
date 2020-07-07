@@ -15,6 +15,6 @@ public class Instrument {
 
 
     public Money total() {
-        return new Money(unitPrice.getValue().multiply(BigDecimal.valueOf(shares)), unitPrice.getCurrency());
+        return new Multiply(unitPrice, BigDecimal.valueOf(shares)).money();
     }
 }
