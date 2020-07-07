@@ -12,7 +12,8 @@ public class Bank {
         }
         if (currency == Currency.CHF) {
             if (money.getCurrency() == Currency.USD) {
-                return new Money(money.getValue().multiply(BigDecimal.valueOf(2)), Currency.CHF);
+                BigDecimal value = money.getValue().multiply(BigDecimal.valueOf(2));
+                return Money.franc(value);
             }
         }
         return null;
