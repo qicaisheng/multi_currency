@@ -8,7 +8,7 @@ import java.util.Map;
 
 public class Bank {
     
-    private Map<Pair<Currency, Currency>, BigDecimal> rates = new HashMap<>();
+    private final Map<Pair<Currency, Currency>, BigDecimal> rates = new HashMap<>();
 
     public Bank() {
         this.rates.put(new Pair<>(Currency.USD, Currency.CHF), new BigDecimal("2.00"));
