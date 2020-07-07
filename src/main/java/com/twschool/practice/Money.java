@@ -8,7 +8,7 @@ public class Money {
     private final Currency currency;
 
     public Money(BigDecimal value, Currency currency) {
-        this.value = value;
+        this.value = value.setScale(2, BigDecimal.ROUND_FLOOR);
         this.currency = currency;
     }
 
@@ -25,13 +25,8 @@ public class Money {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Money money = (Money) o;
-
-        Bank bank = new Bank();
-        Money currentMoney = bank.transformWithUSD(this);
-        Money comparedMoney = bank.transformWithUSD(money);
-        
-        return currentMoney.getValue().compareTo(comparedMoney.value) == 0 &&
-                Objects.equals(currentMoney.getCurrency(), comparedMoney.getCurrency());
+        return Objects.equals(value, money.value) &&
+                currency == money.currency;
     }
 
     @Override
