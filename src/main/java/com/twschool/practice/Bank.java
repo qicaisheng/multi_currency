@@ -11,12 +11,17 @@ public class Bank {
             return transformWithUSD(money);
         }
         if (currency == Currency.CHF) {
-            if (money.getCurrency() == Currency.USD) {
-                BigDecimal value = money.getValue().multiply(BigDecimal.valueOf(2));
-                return Money.franc(value);
-            }
+            return transformWithCHF(money);
         }
         return null;
+    }
+
+    private Money transformWithCHF(Money money) {
+        if (money.getCurrency() == Currency.USD) {
+            BigDecimal value = money.getValue().multiply(BigDecimal.valueOf(2));
+            return Money.franc(value);
+        }
+        return money;
     }
 
     public Money transformWithUSD(Money money) {
