@@ -13,7 +13,7 @@ public class BankTest {
         Bank bank = new Bank();
         
         Money transformedMoney = bank.transformWith(fiveDollar, Currency.USD);
-        Assert.assertEquals(BigDecimal.valueOf(5), transformedMoney.getValue());
+        Assert.assertEquals(new BigDecimal("5.00"), transformedMoney.getValue());
         Assert.assertEquals(Currency.USD, transformedMoney.getCurrency());
 
         Money transformedMoneyWithUSD = bank.transformWithUSD(fiveDollar);

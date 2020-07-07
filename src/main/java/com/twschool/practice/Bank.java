@@ -16,16 +16,8 @@ public class Bank {
     }
 
     public Money transformWith(Money money, Currency currency) {
-        if (currency == money.getCurrency()) {
-            return money;
-        }
-        if (currency == Currency.USD) {
-            return transformWithUSD(money);
-        }
-        if (currency == Currency.CHF) {
-            return transformWithCHF(money);
-        }
-        return null;
+        BigDecimal value = money.getValue().divide(rate(currency, money.getCurrency()), 2, BigDecimal.ROUND_FLOOR);
+        return new Money(value, currency);
     }
 
     private Money transformWithCHF(Money money) {
