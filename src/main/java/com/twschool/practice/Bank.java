@@ -29,19 +29,13 @@ public class Bank {
     }
 
     private Money transformWithCHF(Money money) {
-        if (money.getCurrency() == Currency.USD) {
-            BigDecimal value = money.getValue().multiply(BigDecimal.valueOf(2));
-            return Money.franc(value);
-        }
-        return money;
+        BigDecimal value = money.getValue().divide(rate(Currency.CHF, money.getCurrency()), 2, BigDecimal.ROUND_FLOOR);
+        return Money.franc(value);
     }
 
     public Money transformWithUSD(Money money) {
-        if (money.getCurrency() == Currency.CHF) {
-            BigDecimal value = money.getValue().divide(rates.get(new Pair<>(Currency.USD, Currency.CHF)), 2, BigDecimal.ROUND_FLOOR);
-            return Money.dollar(value);
-        }
-        return money;
+        BigDecimal value = money.getValue().divide(rate(Currency.USD, money.getCurrency()), 2, BigDecimal.ROUND_FLOOR);
+        return Money.dollar(value);
     }
 
     public void setRate(Currency from, Currency to, BigDecimal rate) {

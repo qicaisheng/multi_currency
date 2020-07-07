@@ -17,7 +17,7 @@ public class BankTest {
         Assert.assertEquals(Currency.USD, transformedMoney.getCurrency());
 
         Money transformedMoneyWithUSD = bank.transformWithUSD(fiveDollar);
-        Assert.assertEquals(BigDecimal.valueOf(5), transformedMoneyWithUSD.getValue());
+        Assert.assertEquals(new BigDecimal("5.00"), transformedMoneyWithUSD.getValue());
     }
     
     @Test
@@ -66,7 +66,7 @@ public class BankTest {
         Bank bank = new Bank();
 
         Money transformedMoney = bank.transformWith(money, Currency.CHF);
-        Assert.assertEquals(BigDecimal.TEN, transformedMoney.getValue());
+        Assert.assertEquals(new BigDecimal("10.00"), transformedMoney.getValue());
         Assert.assertEquals(Currency.CHF, transformedMoney.getCurrency());
     }
 
