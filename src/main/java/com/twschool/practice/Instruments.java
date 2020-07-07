@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class Instruments {
-    private List<Instrument> instruments;
+    private final List<Instrument> instruments;
 
     public Instruments(List<Instrument> instruments) {
         this.instruments = instruments;
