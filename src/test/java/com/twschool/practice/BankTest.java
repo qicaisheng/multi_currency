@@ -90,4 +90,13 @@ public class BankTest {
         Assert.assertEquals(new BigDecimal("2.00"), rate);
     }
 
+    @Test
+    public void should_return_zero_dot_five_when_get_rate_from_CHF_to_USD() {
+        Bank bank = new Bank();
+
+        BigDecimal rate = bank.rate(Currency.CHF, Currency.USD);
+
+        Assert.assertEquals(new BigDecimal("0.50"), rate);
+    }
+
 }
