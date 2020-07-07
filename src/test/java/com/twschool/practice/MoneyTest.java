@@ -38,17 +38,7 @@ public class MoneyTest {
 
         Assert.assertEquals(fiveDollar, tenFranc);
     }
-
-    @Test
-    public void should_return_10_USD_when_5_USD_add_10_CHF() {
-        Money fiveDollar = new Money(BigDecimal.valueOf(5), Currency.USD);
-        Money tenFranc = new Money(BigDecimal.TEN, Currency.CHF);
-
-        Money sumMoney = fiveDollar.add(tenFranc);
-        
-        Assert.assertEquals(new Money(BigDecimal.TEN, Currency.USD), sumMoney);
-    }
-
+    
     @Test
     public void should_return_5_USD_when_with_dollar_five() {
         Money money = Money.dollar(BigDecimal.valueOf(5));

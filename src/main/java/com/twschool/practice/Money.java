@@ -47,12 +47,4 @@ public class Money {
         return currency;
     }
 
-    public Money add(Money money) {
-        Bank bank = new Bank();
-        Money currentMoneyInUSD = bank.transformWithUSD(this);
-        Money addMoneyInUSD = bank.transformWithUSD(money);
-
-        BigDecimal sum = currentMoneyInUSD.getValue().add(addMoneyInUSD.getValue());
-        return Money.dollar(sum);
-    }
 }
