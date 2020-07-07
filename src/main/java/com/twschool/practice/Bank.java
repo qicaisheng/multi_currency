@@ -11,8 +11,8 @@ public class Bank {
     private Map<Pair<Currency, Currency>, BigDecimal> rates = new HashMap<>();
 
     public Bank() {
-        this.rates.put(new Pair<>(Currency.USD, Currency.CHF), BigDecimal.valueOf(2));
-        this.rates.put(new Pair<>(Currency.CHF, Currency.USD), new BigDecimal("0.5"));
+        this.rates.put(new Pair<>(Currency.USD, Currency.CHF), new BigDecimal("2.00"));
+        this.rates.put(new Pair<>(Currency.CHF, Currency.USD), new BigDecimal("0.50"));
     }
 
     public Money transformWith(Money money, Currency currency) {
@@ -46,5 +46,9 @@ public class Bank {
 
     public void setRate(Currency from, Currency to, BigDecimal rate) {
         rates.put(new Pair<>(from, to), rate);
+    }
+
+    public BigDecimal rate(Currency from, Currency to) {
+        return rates.get(new Pair<>(from, to));
     }
 }

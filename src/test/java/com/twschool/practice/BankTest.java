@@ -81,4 +81,13 @@ public class BankTest {
         Assert.assertEquals(Currency.USD, transformedMoney.getCurrency());
     }
 
+    @Test
+    public void should_return_2_when_get_rate_from_USD_to_CHF() {
+        Bank bank = new Bank();
+
+        BigDecimal rate = bank.rate(Currency.USD, Currency.CHF);
+        
+        Assert.assertEquals(new BigDecimal("2.00"), rate);
+    }
+
 }
