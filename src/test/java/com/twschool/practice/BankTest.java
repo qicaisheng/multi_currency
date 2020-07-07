@@ -69,4 +69,16 @@ public class BankTest {
         Assert.assertEquals(BigDecimal.TEN, transformedMoney.getValue());
         Assert.assertEquals(Currency.CHF, transformedMoney.getCurrency());
     }
+
+    @Test
+    public void should_return_5_USD_when_transform_with_USD_given_15_CHF_and_USD_CHF_rate_is_3() {
+        Money money = Money.franc(BigDecimal.valueOf(15));
+        Bank bank = new Bank();
+        bank.setRate(Currency.USD, Currency.CHF, BigDecimal.valueOf(3));
+
+        Money transformedMoney = bank.transformWithUSD(money);
+        Assert.assertEquals(new BigDecimal("5.00"), transformedMoney.getValue());
+        Assert.assertEquals(Currency.USD, transformedMoney.getCurrency());
+    }
+
 }

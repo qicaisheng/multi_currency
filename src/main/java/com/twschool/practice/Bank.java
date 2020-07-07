@@ -1,8 +1,20 @@
 package com.twschool.practice;
 
+import javafx.util.Pair;
+
 import java.math.BigDecimal;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Bank {
+    
+    private Map<Pair<Currency, Currency>, BigDecimal> rates = new HashMap<>();
+
+    public Bank() {
+        this.rates.put(new Pair<>(Currency.USD, Currency.CHF), BigDecimal.valueOf(2));
+        this.rates.put(new Pair<>(Currency.CHF, Currency.USD), new BigDecimal("0.5"));
+    }
+
     public Money transformWith(Money money, Currency currency) {
         if (currency == money.getCurrency()) {
             return money;
@@ -26,9 +38,13 @@ public class Bank {
 
     public Money transformWithUSD(Money money) {
         if (money.getCurrency() == Currency.CHF) {
-            BigDecimal value = money.getValue().divide(BigDecimal.valueOf(2), 2, BigDecimal.ROUND_FLOOR);
+            BigDecimal value = money.getValue().divide(rates.get(new Pair<>(Currency.USD, Currency.CHF)), 2, BigDecimal.ROUND_FLOOR);
             return Money.dollar(value);
         }
         return money;
+    }
+
+    public void setRate(Currency from, Currency to, BigDecimal rate) {
+        rates.put(new Pair<>(from, to), rate);
     }
 }
