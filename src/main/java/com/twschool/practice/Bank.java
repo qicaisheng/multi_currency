@@ -20,7 +20,8 @@ public class Bank {
 
     public Money transformWithUSD(Money money) {
         if (money.getCurrency() == Currency.CHF) {
-            return new Money(money.getValue().divide(BigDecimal.valueOf(2), 2, BigDecimal.ROUND_FLOOR), Currency.USD);
+            BigDecimal value = money.getValue().divide(BigDecimal.valueOf(2), 2, BigDecimal.ROUND_FLOOR);
+            return Money.dollar(value);
         }
         return money;
     }
