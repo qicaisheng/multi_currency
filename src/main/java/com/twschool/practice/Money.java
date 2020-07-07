@@ -39,6 +39,14 @@ public class Money {
         return Objects.hash(value, currency);
     }
 
+    @Override
+    public String toString() {
+        return "Money{" +
+                "value=" + value +
+                ", currency=" + currency +
+                '}';
+    }
+
     public BigDecimal getValue() {
         return value;
     }
