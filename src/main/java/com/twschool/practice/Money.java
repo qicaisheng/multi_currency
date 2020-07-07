@@ -16,6 +16,10 @@ public class Money {
         return new Money(value, Currency.USD);
     }
 
+    public static Money franc(BigDecimal value) {
+        return new Money(value, Currency.CHF);
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

@@ -55,4 +55,11 @@ public class MoneyTest {
         
         Assert.assertEquals(new Money(BigDecimal.valueOf(5), Currency.USD), money);
     }
+
+    @Test
+    public void should_return_5_CHF_when_with_franc_five() {
+        Money money = Money.franc(BigDecimal.valueOf(5));
+
+        Assert.assertEquals(new Money(BigDecimal.valueOf(5), Currency.CHF), money);
+    }
 }
