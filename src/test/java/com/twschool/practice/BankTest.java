@@ -99,4 +99,13 @@ public class BankTest {
         Assert.assertEquals(new BigDecimal("0.50"), rate);
     }
 
+    @Test
+    public void should_return_1_when_get_rate_from_USD_to_USD() {
+        Bank bank = new Bank();
+
+        BigDecimal rate = bank.rate(Currency.USD, Currency.USD);
+
+        Assert.assertEquals(new BigDecimal("1.00"), rate);
+    }
+
 }

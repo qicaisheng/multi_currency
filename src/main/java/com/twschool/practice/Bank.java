@@ -49,6 +49,9 @@ public class Bank {
     }
 
     public BigDecimal rate(Currency from, Currency to) {
+        if (from == to) {
+            return new BigDecimal("1.00");
+        }
         return rates.get(new Pair<>(from, to));
     }
 }
