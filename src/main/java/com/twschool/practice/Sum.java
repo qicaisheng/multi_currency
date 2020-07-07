@@ -9,8 +9,7 @@ public class Sum {
         this.addend = addend;
     }
 
-    public Money dollar() {
-        Bank bank = new Bank();
+    public Money dollar(Bank bank) {
         Money augendInUSD = bank.transformWithUSD(augend);
         Money addendInUSD = bank.transformWithUSD(addend);
         return Money.dollar(augendInUSD.getValue().add(addendInUSD.getValue()));

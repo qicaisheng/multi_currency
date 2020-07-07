@@ -16,6 +16,6 @@ public class Instruments {
         bank.setRate(Currency.USD, Currency.CHF, new BigDecimal("1.50"));
         List<Money> moneyList = instruments.stream().map(instrument -> bank.transformWithUSD(instrument.total())).collect(Collectors.toList());
         
-        return moneyList.stream().reduce(Money.dollar(BigDecimal.ZERO), ((money1, money2) -> new Sum(money1, money2).dollar()));
+        return moneyList.stream().reduce(Money.dollar(BigDecimal.ZERO), ((money1, money2) -> new Sum(money1, money2).dollar(bank)));
     }
 }
